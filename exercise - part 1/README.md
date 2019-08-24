@@ -1,4 +1,4 @@
-## MongoDB Exercises
+s## MongoDB Exercises
 ### Instructions 
 1. Download Robo 3t and setup it on your machine.
 2. Create a new connection
@@ -16,6 +16,8 @@
 1. Insert yourself as a new  student. Example:
 `{"fname" : "Ahmad","lname":"Omar","class":"A","age" :25}`
 
+/// db.students.insert({fname:"Mohammad",lname:"Alaa Aldein",class:"A",age:"23"}) ///
+
 2.  Insert the following students.
 
 `{"fname" : "Ahmad","lname":"Omar","class":"A","age" :25,"technologies":["PHP","mySql"]}`
@@ -23,19 +25,36 @@
 `{"fname" : "Steve","lname":"Rayan","class":"C","age" :18,"technologies":["C#","mySql"]}`
 `{"fname" : "Jhon","lname":"williams","class":"A","age" :30, "technologies":["Python","MongoDB"]}`
 
+/// like Q2 but in insert([{},{},....]) ///
+
 3.  Write a MongoDB query to update the data of all students by incrementing their ages one year..
+
+/// db.students.update({},{$inc:{age:1}},{multi:true}) ///
 
 4. Write a MongoDB query to update all the student who has (ADAM) name and make thier classs `A` and thier technolgies `['PHP','mySql']`.
 
+/// db.students.update({fname:"Adam"},{$set{class:"A",technologies:["PHP","mysql"]}}) ///
+
 5. Write a MongoDB query to delete one student from class `A` .
+
+/// db.students.remove({class:"A"},1) ///
 
 6.  Write a MongoDB query to delete All the students from class `C`.
 
+/// db.students.remove({class:"C"}) ///
+
 7. Write a MongoDB query to display all the students that thier age less than 20.
+
+/// db.students.find({age:{$lt:20}}) ///
 
 8. Write a MongoDB query to display all the students that thier age greater than 30.
 
+/// db.students.find({age:{$gt:30}}) ///
+
 9. Write a MongoDB query to get only the students of class `B`.
+
+/// db.students.find({class:"B"}) ///
 
 10.  Sort the faculty details by their age (descending order) and get the details of the first five faculty members only. .
 
+/// db.students.find().sort({age:-1}).limit(5) ///
